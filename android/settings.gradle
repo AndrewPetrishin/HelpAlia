@@ -1,0 +1,3 @@
+rootProject.name = 'HelpAlia'
+
+include ':app'
