@@ -2,9 +2,11 @@ import React from 'react';
 import { Header, Left, Body, Right, Title, Button, Icon, Text } from 'native-base';
 import { PixelRatio } from 'react-native';
 
+// androidStatusBarColor="#f7f7f7"
+
 const HeaderBar = (props) => {
     return (
-        <Header style={styles.mainContainer}>
+        <Header style={styles.mainContainer}>  
             {/* <Left>
                 <Button transparent>
                     <Icon name='arrow-back' />

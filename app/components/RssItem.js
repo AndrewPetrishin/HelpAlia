@@ -3,10 +3,12 @@ import { Header, Left, Body, Right, Title, Button, Icon, Text, Thumbnail, Item, 
 import { PixelRatio, View, Image } from 'react-native';
 import { Comment } from './';
 
+const marginSpec = 50 / PixelRatio.get();
+
 const RssItem = (props) => {
     var {key, thumbnail, from, news_image, message, count_comments, userAvatar, style} = props.data;
-    var itemOwnerNameStyle = {...styles.itemOwnerName};
-    var commentStyle = {...styles.comment};
+    var itemOwnerName = {...styles.itemOwnerName};
+    var commentStyle = {...styles.itemMargin};
     var descCommentStyle = {...styles.descriptionComments};
 
 
@@ -15,11 +17,11 @@ const RssItem = (props) => {
         <View style={styles.itemContainer} key={key}>
             <View style={styles.itemOwnerContainer}>
                 <Thumbnail small source={thumbnail} style={styles.itemThumbnail}/>
-                <Text style={itemOwnerNameStyle}>{from}</Text>
+                <Text style={itemOwnerName}>{from}</Text>
             </View>
             <Image source={news_image} style={styles.itemMainImage}/> 
-            <Comment from={from} message={message} thumbnail={thumbnail}/>
-            <View style={styles.comment}>               
+            <Comment from={from} message={message} marginSpec = {marginSpec}/>
+            <View style={styles.itemMargin}>               
                 <Text style={descCommentStyle}>Comments ({count_comments})</Text>
             </View>
 
@@ -34,10 +36,10 @@ const RssItem = (props) => {
 const styles = {
     itemContainer:{
         borderBottomColor: '#b8b8b8',
-        borderBottomWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: 1 / PixelRatio.get()
     },
     itemOwnerContainer:{
-        margin : 10,
+        margin : marginSpec,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -47,15 +49,17 @@ const styles = {
         borderWidth : 1 / PixelRatio.get()
     },
     itemOwnerName:{
-        marginLeft: 10,
+        marginLeft: marginSpec,
         color: '#262626',
         fontWeight: 'bold',
     },
     itemMainImage:{
-        width: window.width
+        width: window.width,
+        height: 100
     },  
-    comment :{
-        margin:10,
+    itemMargin:{
+        marginLeft: marginSpec,
+        marginRight: marginSpec
     },
     descriptionComments: {
         fontWeight: 'normal',
