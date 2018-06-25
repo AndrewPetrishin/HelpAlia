@@ -31,7 +31,7 @@ class Main extends Component {
                 renderItem={({item, index}) => <RssItems item={item} index={index} events={events}/>
                 }/>
             </Content>
-            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} />
+            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1}/>
         </Container>
     );
   }

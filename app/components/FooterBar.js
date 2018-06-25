@@ -4,11 +4,11 @@ import { PixelRatio} from 'react-native';
 import { FooterButton } from './';
 
 const FooterBar = (props) => {
-    var { newMessageRssCount, newMessageChatCount, userIcon } = props;
-    var rss_icon = require('../images/footer/rss.png');
-    var messenger_icon = require('../images/footer/messenger.png');
-    var marketplace_icon = require('../images/footer/marketplace.png');
-    var services_icon = require('../images/footer/services.png');
+    var { newMessageRssCount, newMessageChatCount, userIcon, selected } = props;
+    var rss_icon = selected && selected == 1 ? require('../images/footer/rss_selected.png') : require('../images/footer/rss.png');
+    var messenger_icon = selected && selected == 2 ? require('../images/footer/messenger.png') : require('../images/footer/messenger.png');
+    var marketplace_icon = selected && selected == 3 ? require('../images/footer/marketplace_selected.png') : require('../images/footer/marketplace.png');
+    var services_icon = selected && selected == 4 ? require('../images/footer/services_selected.png') : require('../images/footer/services.png');
     var cabinet_icon = userIcon != undefined ? userIcon : require('../images/footer/no_user.png');
 
     const mainStyle = [styles.footerStyle, globalStyles.borderTopWidth2PX];
