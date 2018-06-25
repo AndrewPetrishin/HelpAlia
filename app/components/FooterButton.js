@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, Badge, Container } from 'native-base';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 
 const FooterButton = (props) => {
         var { messageCount, icon, widthIcon, badge } = props;        
@@ -47,7 +47,7 @@ const styles = {
         height:18
     },
     badgeStyle : {
-        height: 18
+        height: 18,
     },
     badgeText : {
         fontSize:12, 

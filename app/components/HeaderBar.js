@@ -1,12 +1,12 @@
 import React from 'react';
 import { Header, Left, Body, Right, Title, Button, Icon, Text } from 'native-base';
-import { PixelRatio } from 'react-native';
 
 // androidStatusBarColor="#f7f7f7"
 
 const HeaderBar = (props) => {
+    const mainContainer = [styles.headerMainContainer, globalStyles.borderBottomWidth1PX];
     return (
-        <Header style={styles.mainContainer}>  
+        <Header style={mainContainer}>  
             {/* <Left>
                 <Button transparent>
                     <Icon name='arrow-back' />
@@ -26,11 +26,12 @@ const HeaderBar = (props) => {
     )
 }
 
+const globalStyles = require('../stylesheet');
+
 const styles = {
-    mainContainer: {
+    headerMainContainer: {
         backgroundColor:'#f7f7f7',
         borderBottomColor: '#d9d9d9',
-        borderBottomWidth: 2 / PixelRatio.get(),
     }
 }
 

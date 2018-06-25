@@ -2,26 +2,30 @@ import React from 'react';
 import { View, Image, PixelRatio } from 'react-native';
 import { Thumbnail, Text, List, ListItem, Left, Right, Body } from 'native-base';
 
-AddPhoto = (image) => {
+AddPhoto = (image) => {    
     if(image != undefined && image){
+        var thumbnailContainer = [styles.thumbnailContainer, globalStyles.marginRightSpec];
+        var thumbnail = [styles.thumbnail, globalStyles.borderWidth1PX];
         return (
-            <View style={styles.thumbnailContainer}>
-                <Thumbnail small source={image} style={styles.thumbnail} />          
+            <View style={thumbnailContainer}>
+                <Thumbnail small source={image} style={thumbnail} />          
             </View>
         );
     }    
     return;
 }
 
-var marginSpec = 50 / PixelRatio.get();
+const globalStyles = require('../stylesheet');
 
 const Comment = ({from, message, thumbnail, marginLeft}) => {
     if(message.length > 120){
         var small_msg = message.substring(0 , 180) + ' ...';
-    }
-    marginSpec = marginLeft?marginLeft:marginSpec;
+    }    
+
+    const mainContainer = [styles.mainContainer, globalStyles.marginSpec];
+    const thumbnailContainer = [styles.thumbnailContainer, globalStyles.marginRightSpec];
     return (
-        <View style={styles.mainContainer}>          
+        <View style={mainContainer}>          
             {this.AddPhoto(thumbnail)}
             <View style={styles.bodyContainer}>            
                 <Text style={styles.owner}>{from}:&nbsp;
@@ -36,8 +40,7 @@ export { Comment };
 
 const styles = {
     mainContainer:{
-        flex:1,
-        margin: marginSpec,        
+        flex:1,   
         flexDirection:'row',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
@@ -61,10 +64,8 @@ const styles = {
         flexDirection:'column',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        marginRight : marginSpec
     },
     thumbnail:{    
-        borderColor : 'black', 
-        borderWidth : 1 / PixelRatio.get(),      
+        borderColor : 'black',     
     }
 };
