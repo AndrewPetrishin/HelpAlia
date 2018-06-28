@@ -8,30 +8,29 @@ import Comments from './pages/Comments';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './pages/index';
 
-registerScreens();
+const store = createStore(reducers);
 
-const tabs = [{
-  label: 'Navigation',
-  screen: 'main.Rss', 
-  title: 'Navigation Types',
-}];
+registerScreens(store, Provider);
 
-Navigation.startTabBasedApp({ tabs,
-  animationType: Platform.OS === 'ios' ? 'slide-down' : 'fade',
-  tabsStyle: {
-    tabBarBackgroundColor: '#003a66',
-    tabBarButtonColor: '#ffffff',
-    tabBarSelectedButtonColor: '#ff505c',
-    tabFontFamily: 'BioRhyme-Bold',
-  },
-  appStyle: {
-    tabBarBackgroundColor: '#003a66',
-    navBarButtonColor: '#ffffff',
-    tabBarButtonColor: '#ffffff',
-    navBarTextColor: '#ffffff',
-    tabBarSelectedButtonColor: '#ff505c',
-    navigationBarColor: '#003a66',
-    navBarBackgroundColor: '#003a66',
-    statusBarColor: '#002b4c',
-    tabFontFamily: 'BioRhyme-Bold',
-  } });
+const navigatorStyle = {
+	statusBarColor: 'black',
+	statusBarTextColorScheme: 'light',
+	navigationBarColor: 'black',
+	navBarBackgroundColor: '#0a0a0a',
+	navBarTextColor: 'white',
+	navBarButtonColor: 'white',
+	tabBarButtonColor: 'red',
+	tabBarSelectedButtonColor: 'red',
+	tabBarBackgroundColor: 'white',
+	topBarElevationShadowEnabled: false,
+	navBarHideOnScroll: true,
+	tabBarHidden: false,
+	drawUnderTabBar: true
+};
+
+Navigation.startSingleScreenApp({
+	screen: {
+		screen: 'main.Rss',
+		title: 'Sample App',
+		navigatorStyle:navigatorStyle,	
+	}});
