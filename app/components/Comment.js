@@ -4,8 +4,8 @@ import { Thumbnail, Text, List, ListItem, Left, Right, Body } from 'native-base'
 
 AddPhoto = (image) => {    
     if(image != undefined && image){
-        var thumbnailContainer = [styles.thumbnailContainer, globalStyles.marginRightSpec];
-        var thumbnail = [styles.thumbnail, globalStyles.borderWidth1PX];
+        const thumbnailContainer = [styles.thumbnailContainer, globalStyles.marginRightSpec];
+        const thumbnail = [styles.thumbnail, globalStyles.borderWidth1PX];
         return (
             <View style={thumbnailContainer}>
                 <Thumbnail small source={image} style={thumbnail} />          
@@ -15,24 +15,38 @@ AddPhoto = (image) => {
     return;
 }
 
+AddTimestamp = (time) => {
+    const timeStyle = [styles.timeStyle];
+    if(time != undefined && time){
+        return (       
+            <View style={globalStyles.marginTopSpec}>
+                <Text style={timeStyle}>{time}</Text>
+            </View>
+        );
+    }
+}
+
 const globalStyles = require('../stylesheet');
 
-const Comment = ({from, message, thumbnail, marginLeft}) => {
-    if(message.length > 120){
-        var small_msg = message.substring(0 , 180) + ' ...';
+const Comment = ({from, message, thumbnail, time, shortLength, borderBottom}) => {
+    if(shortLength && message.length > shortLength){        
+        var small_msg = message.substring(0 , shortLength) + ' ...';
     }    
-
-    const mainContainer = [styles.mainContainer, globalStyles.marginSpec];
+    const mainContainer = [styles.mainContainer, globalStyles.marginSpec];    
     const thumbnailContainer = [styles.thumbnailContainer, globalStyles.marginRightSpec];
+    const borderStyle = borderBottom ? globalStyles.borderBottomWidth1PX : {};
     return (
-        <View style={mainContainer}>          
-            {this.AddPhoto(thumbnail)}
-            <View style={styles.bodyContainer}>            
-                <Text style={styles.owner}>{from}:&nbsp;
-                    <Text style={styles.message}>{ small_msg ? small_msg : message }</Text>
-                </Text> 
-            </View>             
-        </View>   
+        <View style={borderStyle}>
+            <View style={mainContainer}>          
+                {this.AddPhoto(thumbnail)}
+                <View style={styles.bodyContainer}>            
+                    <Text style={styles.owner}>{from}:&nbsp;
+                        <Text style={styles.message}>{ small_msg ? small_msg : message }</Text>
+                    </Text> 
+                    {this.AddTimestamp(time)}
+                </View>             
+            </View>   
+        </View>
     );
 }
 
@@ -67,5 +81,9 @@ const styles = {
     },
     thumbnail:{    
         borderColor : 'black',     
+    },
+    timeStyle:{
+        color:'#999999',
+        fontSize : 12
     }
 };

@@ -11,24 +11,26 @@ const RssItem = (props) => {
     var itemMainContainer = [styles.itemContainer, globalStyles.borderBottomWidth1PX, globalStyles.paddingBottomSpec];
     var itemOwnerContainer = [styles.itemOwnerContainer, globalStyles.marginSpec];
     var itemThumbnail = [styles.itemThumbnail, globalStyles.borderWidth1PX];
-    return (        
-        <View>        
-            <View style={itemMainContainer} key={key}>            
-                <View style={itemOwnerContainer}>
-                    <Thumbnail small source={thumbnail} style={itemThumbnail}/>
-                    <Text style={itemOwnerName}>{from}</Text>
+    return ( 
+        <Button transparent onPress={() => this.props.navigation.navigate('RssComments', key)}>       
+            <View>        
+                <View style={itemMainContainer} key={key}>            
+                    <View style={itemOwnerContainer}>
+                        <Thumbnail small source={thumbnail} style={itemThumbnail}/>
+                        <Text style={itemOwnerName}>{from}</Text>
+                    </View>
+                    <Image source={news_image} style={styles.itemMainImage}/> 
+                    <Comment from={from} message={message} shortLength = {180}/>
+                    <View style={itemMarginSpec}>               
+                        <Text style={styles.descriptionComments}>Comments ({count_comments})</Text>
+                    </View>                
+                    {/* <View style={styles.itemOwnerContainer}>
+                        <Thumbnail small source={userAvatar} style={itemThumbnail}/>
+                        <Input placeholder='yours comment' style={{paddingLeft:20, paddingRight:20, borderRadius:20, borderWidth:1/PixelRatio.get(), borderColor:'red', height:32, fontSize:14, lineHeight:32, marginLeft:10}}/>
+                    </View> */}
                 </View>
-                <Image source={news_image} style={styles.itemMainImage}/> 
-                <Comment from={from} message={message}/>
-                <View style={itemMarginSpec}>               
-                    <Text style={styles.descriptionComments}>Comments ({count_comments})</Text>
-                </View>                
-                {/* <View style={styles.itemOwnerContainer}>
-                    <Thumbnail small source={userAvatar} style={itemThumbnail}/>
-                    <Input placeholder='yours comment' style={{paddingLeft:20, paddingRight:20, borderRadius:20, borderWidth:1/PixelRatio.get(), borderColor:'red', height:32, fontSize:14, lineHeight:32, marginLeft:10}}/>
-                </View> */}
-            </View>
-        </View>        
+            </View>        
+        </Button>
     );
 }
 

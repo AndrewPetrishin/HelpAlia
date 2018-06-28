@@ -6,3 +6,4 @@ export * from './RssItems';
 export * from './Comment';
 export * from './RssEvents';
 export * from './RssEvent';
+export * from './FooterCommit';

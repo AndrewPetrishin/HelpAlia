@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Button, Left, Body, Right,Title, Text } from 'native-base';
 import { View, FlatList} from 'react-native';
 import { FooterBar, HeaderBar, RssItems } from '../components/';
+import { connect } from 'react-redux';
 
-class Main extends Component {    
-
-    constructor(props){
-        super(props);
-    }
-
+class Rss extends Component {    
   render() {
     var userAvatar = require('../images/mock/47.png')
     var news_image = require('../images/mock/Isreal-land.jpg');
@@ -18,23 +14,28 @@ class Main extends Component {
     var events = [{key: '1', thumbnail : userAvatar, text:'Sukkot'}, {key: '2', thumbnail : userAvatar, text:'Rosh Hashana'}, {key: '3', thumbnail : userAvatar, text:'Hag 1'}, {key: '6', thumbnail : userAvatar, text:'Hag 6'}, {key: '4', thumbnail : userAvatar, text:'Hag 123'}, {key: '5', thumbnail : userAvatar, text:'Hag 3455'}];
     var newMessageRssCount = 4;
     var newMessageChatCount = 1000;
-    /// mock
+    const avatar = this.props.user.thumbnail;
+    /// mock    
 
     return (
         <Container>
             <HeaderBar>
-                RSS NEWS
+                {this.props.user.header}
             </HeaderBar>
-            <Content>
+            <Content style={{backgroundColor:'#fff'}}>
             <FlatList
                 data={data}
                 renderItem={({item, index}) => <RssItems item={item} index={index} events={events}/>
                 }/>
             </Content>
-            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1}/>
+            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1} userIcon={avatar}/>
         </Container>
     );
   }
 }
 
-export default Main;
+const mapStateToProps = state => {
+    return { user : state.user };
+}
+
+export default connect(mapStateToProps)(Rss);
