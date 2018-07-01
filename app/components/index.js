@@ -7,3 +7,5 @@ export * from './Comment';
 export * from './RssEvents';
 export * from './RssEvent';
 export * from './FooterCommit';
+export * from './ChatListItems';
+export * from './ChatItem';
