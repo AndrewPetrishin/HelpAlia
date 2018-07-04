@@ -18,8 +18,8 @@ class Comments extends Component {
 
     var items = [mainData, ...data];
     return (
-        <Container>
-            <HeaderBar left>                                
+        <Container style={{backgroundColor:'#fff'}}>
+            <HeaderBar left='HomeScreen' nav={this.props.navigation.navigate}>                                
                 Comments
             </HeaderBar>
             <FlatList                 

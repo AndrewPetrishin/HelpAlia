@@ -16,19 +16,18 @@ class Rss extends Component {
     var newMessageChatCount = 1000;
     const avatar = this.props.user.thumbnail;
     /// mock    
-
     return (
         <Container>
             <HeaderBar>
                 {this.props.user.header}
             </HeaderBar>
             <Content style={{backgroundColor:'#fff'}}>
-            <FlatList
-                data={data}
-                renderItem={({item, index}) => <RssItems item={item} index={index} events={events}/>
-                }/>
+                <FlatList
+                    data={data}
+                    renderItem={({item, index}) => <RssItems item={item} index={index} events={events} nav={this.props.navigation.navigate}/>
+                    }/>
             </Content>
-            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1} userIcon={avatar}/>
+            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1} userIcon={avatar} nav={this.props.navigation.navigate}/>
         </Container>
     );
   }

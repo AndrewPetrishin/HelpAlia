@@ -12,7 +12,7 @@ const RssItem = (props) => {
     var itemOwnerContainer = [styles.itemOwnerContainer, globalStyles.marginSpec];
     var itemThumbnail = [styles.itemThumbnail, globalStyles.borderWidth1PX];
     return ( 
-        <Button transparent onPress={() => this.props.navigation.navigate('RssComments', key)}>       
+       
             <View>        
                 <View style={itemMainContainer} key={key}>            
                     <View style={itemOwnerContainer}>
@@ -30,7 +30,7 @@ const RssItem = (props) => {
                     </View> */}
                 </View>
             </View>        
-        </Button>
+       
     );
 }
 

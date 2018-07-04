@@ -9,3 +9,5 @@ export * from './RssEvent';
 export * from './FooterCommit';
 export * from './ChatListItems';
 export * from './ChatItem';
+export * from './ChatMessage';
+export * from './FooterSendMessage';

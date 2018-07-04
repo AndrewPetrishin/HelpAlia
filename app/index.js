@@ -1,36 +1,27 @@
-import React, { Component } from 'react';
-import { Platform } from 'react-native';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './reducers';
-import Rss from './pages/Rss';
-import Comments from './pages/Comments';
-import { Navigation } from 'react-native-navigation';
-import { registerScreens } from './pages/index';
 
+import React, { Component } from 'react';
+import { View, StatusBar} from 'react-native';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk';
+
+import reducers from './reducers/index';
+import Components from './pages/index';
+
+// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+// const reducer = combineReducers(reducers);
 const store = createStore(reducers);
 
-registerScreens(store, Provider);
-
-const navigatorStyle = {
-	statusBarColor: 'black',
-	statusBarTextColorScheme: 'light',
-	navigationBarColor: 'black',
-	navBarBackgroundColor: '#0a0a0a',
-	navBarTextColor: 'white',
-	navBarButtonColor: 'white',
-	tabBarButtonColor: 'red',
-	tabBarSelectedButtonColor: 'red',
-	tabBarBackgroundColor: 'white',
-	topBarElevationShadowEnabled: false,
-	navBarHideOnScroll: true,
-	tabBarHidden: false,
-	drawUnderTabBar: true
-};
-
-Navigation.startSingleScreenApp({
-	screen: {
-		screen: 'main.Rss',
-		title: 'Sample App',
-		navigatorStyle:navigatorStyle,	
-	}});
+export default class Index extends Component {
+  render() {
+    return (
+      <View
+       style={{ flex:1 }}>
+       <StatusBar barStyle="light-content" />
+       <Provider store={store}>
+        <Components/>
+       </Provider>
+      </View>
+    );
+  }
+}

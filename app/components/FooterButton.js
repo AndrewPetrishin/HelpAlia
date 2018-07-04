@@ -3,7 +3,7 @@ import { Button, Text, Badge, Container } from 'native-base';
 import { Image, View } from 'react-native';
 
 const FooterButton = (props) => {
-        var { messageCount, icon, widthIcon, badge, cabinet } = props;        
+        var { messageCount, icon, widthIcon, badge, cabinet, onPress } = props;        
         var iconStyle = [{
             height : 32,
             width : widthIcon != undefined ? widthIcon : 32
@@ -11,7 +11,7 @@ const FooterButton = (props) => {
         
         var text = props.children;     
         return (         
-            <Button badge>
+            <Button badge onPress = {onPress}>
                 {this.ShowBadge(badge, messageCount)}
                 <Image source={icon} style={iconStyle}/>
                 {this.ShowText(text)}

@@ -3,18 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from 'native-base';
 import { ChatItem } from './';
 
-const ChatListItems = ({item, index}) => {  
+const ChatListItems = ({item, index, nav}) => {  
     if(index==0){
         return (        
             <View style={styles.mainContainer}>
-                <ChatItem item={item} header/>
+                <ChatItem item={item} header nav={nav} />
                 <View style={styles.innerContainer}>
                     <Text style={styles.insideText}>Your messages</Text>
                 </View>
             </View>      
         );        
     }
-    return (<ChatItem item={item}/>);
+    return (<ChatItem item={item} nav={nav}/>);
 }
 
 const styles ={

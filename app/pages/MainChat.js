@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input, Button} from 'native-base';
 import { View, FlatList, Image } from 'react-native';
-import { FooterBar, HeaderBar, Comment, ChatListItems } from '../components/';
+import { HeaderBar, Comment, ChatListItems, FooterBar } from '../components/';
 
-class ChatMain extends Component {       
-
-    onPressScrollUp = () => {
-        this.scroll.scrollToOffset( {offset: -1})
-    }
+class MainChat extends Component {       
 
   render() {
         var newMessageRssCount = 2;
@@ -18,7 +14,7 @@ class ChatMain extends Component {
         var av4 = require('../images/mock/heroes/skywrath_mage.png');
         var av5 = require('../images/mock/heroes/templar_assasin.png');
         var avMain = require('../images/footer/47.png');
-        var data = [{key:'main', name:'Ariel group chat', thumbnail:avMain, description:'344 users count'},
+        var data = [{key:'main', name:'Ariel group chat', thumbnail:avMain, description:'344 members'},
         {key:'1', thumbnail:av1, name:'Steve',description:'How many people your kill?'},
         {key:'2', thumbnail:av2, name:'Orli',description:'HI. It\'s here now?'},
         {key:'3', thumbnail:av3, name:'Maks',description:'Hello'},
@@ -29,22 +25,23 @@ class ChatMain extends Component {
         {key:'8', thumbnail:av3, name:'Maks',description:'Hello'},
         {key:'9', thumbnail:av4, name:'Shalom',description:'I am not went to work today %('},
         {key:'10', thumbnail:av5, name:'Fifus',description:'It iss hard without you!'}];
-      return (
-        <Container>
-            <HeaderBar>List chats</HeaderBar>
-            <Content style={{backgroundColor:'#fff'}}>
-                <FlatList  
-                    horizontal={false}                  
-                    ref={(s) => {this.scroll = s}}
-                    data={data}
-                    renderItem={({item, index}) => <ChatListItems item={item} index={index}/>
-                    }/>
-                <Button onPress={this.onPressScrollUp}><Text>Text Text PressME</Text></Button>
-            </Content>
-            <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={2}/>
-        </Container>
+
+        const nav = this.props.navigation.navigate;
+        return (
+            <Container>
+                <HeaderBar>List chats</HeaderBar>
+                <Content style={{backgroundColor:'#fff'}}>
+                    <FlatList  
+                        horizontal={false}                                      
+                        data={data}
+                        ListFooterComponent
+                        renderItem={({item, index}) => <ChatListItems item={item} index={index} nav={nav}/>
+                        }/>                
+                </Content>
+                <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={2} nav={nav}/>
+            </Container>
     );
   }
 }
 
-export default ChatMain;
+export default MainChat;
