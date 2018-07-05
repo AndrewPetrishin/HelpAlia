@@ -16,6 +16,8 @@ class Rss extends Component {
     var newMessageChatCount = 1000;
     const avatar = this.props.user.thumbnail;
     /// mock    
+
+    
     return (
         <Container>
             <HeaderBar>
