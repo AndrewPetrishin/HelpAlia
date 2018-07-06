@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Button, Left, Body, Right,Title, Text } from 'native-base';
+import { Container, Content, Text, List } from 'native-base';
 import { View, FlatList} from 'react-native';
-import { FooterBar, HeaderBar, RssItems } from '../components/';
+import { FooterBar, HeaderBar, RssItem, RssEvent } from '../components/';
 import { connect } from 'react-redux';
+import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
 
-class Rss extends Component {    
+class Rss extends Component {
+    showEvents(data){
+        return (
+            <View style={styles.eventsMainContainer}>
+                <Text style={styles.eventsTextContainer}>Events</Text>
+                <List dataArray={data} horizontal={true}
+                    renderRow={(item) => <RssEvent data={item} nav={this.props.navigation.navigate}/>}>
+                </List>
+            </View>
+        );
+    }
+    
   render() {
     var userAvatar = require('../images/mock/47.png')
     var news_image = require('../images/mock/Isreal-land.jpg');
@@ -24,13 +36,23 @@ class Rss extends Component {
             <Content style={{backgroundColor:'#fff'}}>
                 <FlatList
                     data={data}
-                    renderItem={({item, index}) => <RssItems item={item} index={index} events={events} nav={this.props.navigation.navigate}/>
-                    }/>
+                    ListHeaderComponent = { this.showEvents(events) }
+                    renderItem={({item}) => <RssItem data = {item} nav={this.props.navigation.navigate}/>
+                }/>
             </Content>
             <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={1} userIcon={avatar} nav={this.props.navigation.navigate}/>
         </Container>
     );
   }
+}
+
+const styles = {
+    eventsMainContainer:{
+        borderBottomWidth : WIDTH_1PX,
+    },
+    eventsTextContainer:{
+        margin : SPACE_SPEC,
+    }
 }
 
 const mapStateToProps = state => {

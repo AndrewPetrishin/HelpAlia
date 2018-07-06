@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input, Button} from 'native-base';
 import { View, FlatList, Image } from 'react-native';
-import { HeaderBar, Comment, ChatListItems, FooterBar } from '../components/';
+import { HeaderBar, Comment, ChatItem, FooterBar } from '../components/';
 
-class MainChat extends Component {       
+class MainChat extends Component {      
 
-  render() {
+    showFooterForChatList = (item, nav) => {
+        return (        
+            <View style={styles.mainContainer}>
+                <ChatItem item={item} header nav={nav} />
+                <View style={styles.innerContainer}>
+                    <Text style={styles.insideText}>Your messages</Text>
+                </View>
+            </View>      
+        );     
+    }
+
+    render() {
         var newMessageRssCount = 2;
         var newMessageChatCount = 10;
         var av1 = require('../images/mock/heroes/bouny_hunter.png');
@@ -14,7 +25,7 @@ class MainChat extends Component {
         var av4 = require('../images/mock/heroes/skywrath_mage.png');
         var av5 = require('../images/mock/heroes/templar_assasin.png');
         var avMain = require('../images/footer/47.png');
-        var data = [{key:'main', name:'Ariel group chat', thumbnail:avMain, description:'344 members'},
+        var data = [
         {key:'1', thumbnail:av1, name:'Steve',description:'How many people your kill?'},
         {key:'2', thumbnail:av2, name:'Orli',description:'HI. It\'s here now?'},
         {key:'3', thumbnail:av3, name:'Maks',description:'Hello'},
@@ -26,6 +37,7 @@ class MainChat extends Component {
         {key:'9', thumbnail:av4, name:'Shalom',description:'I am not went to work today %('},
         {key:'10', thumbnail:av5, name:'Fifus',description:'It iss hard without you!'}];
 
+        var headerData = {key:'main', name:'Ariel group chat', thumbnail:avMain, description:'344 members'};
         const nav = this.props.navigation.navigate;
         return (
             <Container>
@@ -34,8 +46,8 @@ class MainChat extends Component {
                     <FlatList  
                         horizontal={false}                                      
                         data={data}
-                        ListFooterComponent
-                        renderItem={({item, index}) => <ChatListItems item={item} index={index} nav={nav}/>
+                        ListHeaderComponent = { this.showFooterForChatList(headerData, nav) }
+                        renderItem={({item}) => <ChatItem small item={item} nav={nav}/>
                         }/>                
                 </Content>
                 <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={2} nav={nav}/>
@@ -43,5 +55,18 @@ class MainChat extends Component {
     );
   }
 }
+
+const styles ={
+    mainContainer:{
+        flex:1,
+        backgroundColor:'#f7f7f7',
+    },
+    innerContainer:{
+        margin:10,
+    },
+    insideText:{
+        color:'#c8c7cc'
+    }
+};
 
 export default MainChat;

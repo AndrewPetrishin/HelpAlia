@@ -3,17 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import { Thumbnail, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
-const ChatItem = ({item, style, header, nav}) => {  
+const ChatItem = ({item, style, header, nav, small}) => {  
     const mainContainer = header ? [styles.mainContainer, styles.mainContainerHeader] : styles.mainContainer;       
     const textHeaderColor = header ? {color:'#fff'} : {color:'#000'};
     const textSubHeaderColor = header ? {color:'#fff'} : {color:'#8e8e8e'}; 
     const thumbnail = item.thumbnail ? item.thumbnail : require('../images/footer/no_user.png');
     const rigthContainer = header ? styles.rigthContainer: [styles.rigthContainer, styles.borderBottom];
+    const thumbnailSmall = small ? true : false;
     return (        
         <TouchableOpacity onPress={() => nav("Chat")}>
             <View style={mainContainer}>
                 <View style={styles.thumbnail}>
-                    <Thumbnail source={thumbnail}/>
+                    <Thumbnail small={thumbnailSmall} source={thumbnail}/>
                 </View>
                 <View style={rigthContainer}>
                     <View style={styles.innerTextContainer}>

@@ -16,10 +16,10 @@ const FooterBar = (props) => {
         <Footer>
             <FooterTab style={mainStyle}>
                 <FooterButton icon={rss_icon} badge messageCount={newMessageRssCount} onPress={() => nav('HomeScreen')}/>
-                <FooterButton icon={messenger_icon} badge messageCount={newMessageChatCount} onPress={() => nav('MainChat')}/>                    
+                <FooterButton icon={messenger_icon} badge messageCount={newMessageChatCount} onPress={() => nav('ChatList')}/>                    
                 <FooterButton icon={marketplace_icon} widthIcon={36} onPress={() => console.log(4)}/>
                 <FooterButton icon={services_icon} onPress={() => nav('HomeScreen')}/>
-                <FooterButton icon={cabinet_icon} onPress={() => nav('HomeScreen')}/>
+                <FooterButton icon={cabinet_icon} cabinet onPress={() => nav('HomeScreen')}/>
             </FooterTab>
         </Footer>    
     )
