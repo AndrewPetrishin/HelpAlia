@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, TouchableOpacity } from 'react-native';
+import { Image, View, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { Header, Left, Body, Right, Title, Button, Icon, Text, Item, Input } from 'native-base';
 import { SPACE_SPEC, WIDTH_1PX } from './Helper';
 
@@ -15,7 +15,7 @@ const HeaderBar = (props) => {
         <Header style={mainContainer}>  
             {this.showBackBtn(left, nav)}
             <View style={ titleContainer }>
-                <Title style={{color:'black'}}>{headerText}</Title>
+                <Title style={{color:'#141623'}}>{headerText}</Title>
             </View>
             {this.showRight(right, nav)}
         </Header>
@@ -27,9 +27,9 @@ showBackBtn = (base, nav) => {
         const imgBack = require('../images/header/back.png');
         return (
             <View style={{alignItems:'center', justifyContent : 'center'}}>
-                <TouchableOpacity onPress={() => nav(base)}>               
+                <TouchableHighlight onPress={() => nav(base)}>               
                     <Image source= {imgBack} style={{ width:14, height:14  }}/>
-                </TouchableOpacity>
+                </TouchableHighlight>
             </View>
         );
     }    

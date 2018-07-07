@@ -13,7 +13,7 @@ const AppNavigator = createStackNavigator({
         Chat : { screen : Chat},
     },
     {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'ChatList',
         headerMode: 'none'
       }
 );
