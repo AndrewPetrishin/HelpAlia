@@ -61,7 +61,7 @@ class Chat extends Component {
     const nav = this.props.navigation.navigate;    
     return (
         <Container style={{backgroundColor:'#fff'}}>
-            <HeaderBar left='MainChat' nav={this.props.navigation.navigate}>                                
+            <HeaderBar left='ChatList' nav={this.props.navigation.navigate}>                                
                 Chat
             </HeaderBar>
             <FlatList       
