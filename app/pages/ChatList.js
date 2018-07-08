@@ -66,7 +66,7 @@ class ChatList extends Component {
                     <FlatList  
                         horizontal={false}                                      
                         data={data}
-                        // ListHeaderComponent = { this.showFooterForChatList(headerData, nav) }
+                        ListHeaderComponent = { this.showFooterForChatList(headerData, nav) }
                         renderItem={({item}) => <ChatItem small item={item} nav={nav}/>}
                         onScroll = { this._onScroll }
                         
