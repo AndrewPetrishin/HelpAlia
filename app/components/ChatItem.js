@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     borderBottom:{
         borderBottomWidth: 1,
-        borderBottomColor: '#b8b8b8',
+        borderBottomColor: '#c8c7cc',
     }
 });
 

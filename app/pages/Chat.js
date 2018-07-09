@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
-import { View, FlatList, Image, Dimensions, TouchableOpacity, LayoutAnimation } from 'react-native';
+import { View, FlatList, Image, Dimensions, TouchableOpacity} from 'react-native';
 import { FooterSendMessage, HeaderBar, ChatMessage } from '../components/';
 
 class Chat extends Component {      
@@ -8,7 +8,6 @@ class Chat extends Component {
         super(props);
         this.state = { buttonDown : false, offsetMax : Dimensions.get('window').height / 2};
         this._onScroll = this._onScroll.bind(this);
-        console.log('window = ' + Dimensions.get('window').height + ' screen = ' + Dimensions.get('screen').height);        
     }
 
     _onScroll = (event) =>{        

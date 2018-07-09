@@ -8,3 +8,4 @@ export * from './FooterCommit';
 export * from './ChatItem';
 export * from './ChatMessage';
 export * from './FooterSendMessage';
+export * from './SearchInput';

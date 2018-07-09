@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
-import { Container, List, Content, Text, Thumbnail, Input, Button} from 'native-base';
-import { View, FlatList, Image } from 'react-native';
-import { HeaderBar, Comment, ChatItem, FooterBar } from '../components/';
+import { Container, Content, Text, Item, Input} from 'native-base';
+import { View, FlatList, Image, TextInput} from 'react-native';
+import { HeaderBar, Comment, ChatItem, FooterBar, SearchInput } from '../components/';
+import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
 
-class MainChat extends Component {      
+class ChatList extends Component {      
 
+    constructor(props){
+        super(props);
+        this.state = { buttonDown : false};
+        this._onScroll = this._onScroll.bind(this);
+    }
+
+    _onScroll = (event) =>{        
+        const currentOffset = event.nativeEvent.contentOffset.y;
+        console.log(currentOffset);        
+        if(currentOffset > 50){
+            if( !this.state.buttonDown){
+                this.setState({buttonDown : true});
+            }
+        }
+        else{
+            this.setState({buttonDown : false});
+        }
+    }
     showFooterForChatList = (item, nav) => {
         return (        
             <View style={styles.mainContainer}>
+                <SearchInput />
                 <ChatItem item={item} header nav={nav} />
                 <View style={styles.innerContainer}>
                     <Text style={styles.insideText}>Your messages</Text>
@@ -41,14 +61,16 @@ class MainChat extends Component {
         const nav = this.props.navigation.navigate;
         return (
             <Container>
-                <HeaderBar>List chats</HeaderBar>
+                <HeaderBar noborder = {this.state.buttonDown}>List chats</HeaderBar>
                 <Content style={{backgroundColor:'#fff'}}>
                     <FlatList  
                         horizontal={false}                                      
                         data={data}
                         ListHeaderComponent = { this.showFooterForChatList(headerData, nav) }
-                        renderItem={({item}) => <ChatItem small item={item} nav={nav}/>
-                        }/>                
+                        renderItem={({item}) => <ChatItem small item={item} nav={nav}/>}
+                        onScroll = { this._onScroll }
+                        
+                        />                
                 </Content>
                 <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={2} nav={nav}/>
             </Container>
@@ -62,11 +84,11 @@ const styles ={
         backgroundColor:'#f7f7f7',
     },
     innerContainer:{
-        margin:10,
     },
     insideText:{
+        margin: 2 * SPACE_SPEC,
         color:'#c8c7cc'
     }
 };
 
-export default MainChat;
+export default ChatList;
