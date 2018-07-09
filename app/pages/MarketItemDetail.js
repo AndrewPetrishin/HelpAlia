@@ -28,36 +28,15 @@ class Marketplace extends Component {
     }
 
     render() {
-        var av1 = require('../images/header/search.png');
-        var av2 = require('../images/mock/new-desks.jpg');
-        var av3 = require('../images/mock/pc.png');    
-        var av4 = require('../images/mock/sofa.jpg');
-        var av5 = require('../images/mock/sofa2.jpg');
-        var adv1 = require('../images/mock/adv/cars.gif');
-        var newMessageRssCount = 4;
-        var newMessageChatCount = 6;
-        
-        var items = [{key:'1', thumbnail: av2, title:'Rent a flat for famillyRent a flat for familly', date:'Today 15:19', location:'Tel Aviv', price:'1200 USD', type: 'vip'},
-        {key:'2', thumbnail: av1, title:'Lamp antiquare!!!!!!', date:'Yesterday 10:00', vip: false, location:'Tel Aviv', price:'4200 USD', type: 'new'},
-        {key:'3', thumbnail: av3, title:'Super puper computer ', date:'22.12.2018 12:00', vip: false, location:'Lod', price:'10000 USD', type: 'simple'},
-        {key:'111', type:'adv', thumbnail: adv1},
-        {key:'4', thumbnail: av4, title:'Divan NEW', date:'20.12.2018 11:00', vip: false, location:'Bat Yam', price:'100 USD', type: 'simple'},
-        {key:'5', thumbnail: av5, title:'Divan NEW 2', date:'01.12.2018 07:35', vip: false, location:'Lod', price:'10000 USD', type: 'simple'}, ];
-
-        const filters = [{key:'1',text:'flat poor aflat poor simple text'},{key:'2',text:'Filter2'},{key:'3',text:'Filter3  simple text  simple text  simple text'}];
+        var av1 = require('../images/mock/pc.png');    
+        var av2 = require('../images/mock/sofa.jpg');
+        var av3 = require('../images/mock/sofa2.jpg');     
+        const filters = [{key:'1',text:'flat'},{key:'2',text:'two doors'},{key:'3',text:'small'}];
         return (
             <Container>
-                <HeaderBar>
-                    Marketplace          
-                </HeaderBar>                          
                  <Content style={{backgroundColor:'#fff'}}>
-                    <FlatList
-                        data={items}
-                        ListHeaderComponent = { this.showHeader(filters) }
-                        renderItem={({item}) => <MarketItem data = {item} nav={this.props.navigation.navigate}/>
-                    }/>
+                    <Image source='' resizeMode='curtainer'/>
                 </Content>
-                <FooterBar newMessageRssCount={newMessageRssCount} selected ={3} nav={this.props.navigation.navigate}/>
             </Container>
         );
     }

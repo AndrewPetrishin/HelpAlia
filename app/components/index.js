@@ -9,3 +9,4 @@ export * from './ChatItem';
 export * from './ChatMessage';
 export * from './FooterSendMessage';
 export * from './SearchInput';
+export * from './MarketItem';

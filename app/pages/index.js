@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator({
         Marketplace : { screen : Marketplace},
     },
     {
-        initialRouteName: 'ChatList',
+        initialRouteName: 'Marketplace',
         headerMode: 'none'
       }
 );
