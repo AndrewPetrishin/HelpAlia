@@ -27,10 +27,9 @@ class Marketplace extends Component {
         var av5 = require('../images/mock/sofa2.jpg');
         
         var items = [{key:'1', thumbnail: av2, title:'Rent a flat for familly', date:'Today 15:19', location:'Tel Aviv', price:'1200 USD', type: 'vip'},
-        {key:'2', thumbnail: av1, title:'Lamp antiquare!!!!!!', date:'Yesterday 10:00', vip: false, location:'Tel Aviv', price:'4200 USD', type: 'new},
+        {key:'2', thumbnail: av1, title:'Lamp antiquare!!!!!!', date:'Yesterday 10:00', vip: false, location:'Tel Aviv', price:'4200 USD', type: 'new'},
         {key:'3', thumbnail: av3, title:'Super puper computer ', date:'22.12.2018 12:00', vip: false, location:'Lod', price:'10000 USD', type: 'vip'},
-        {key:'4', thumbnail: av4, title:'Divan NEW', date:'20.12.2018 11:00', vip: false, location:'Bat Yam', price:'100 USD', type: 'vip'},
-        {key:'4', thumbnail: av5, title:'Raritet Divan NEW', date:'18.12.2018 19:15', vip: false, location:'Bat Yam', price:'300 USD'}, type: 'vip'];
+        {key:'4', thumbnail: av4, title:'Divan NEW', date:'20.12.2018 11:00', vip: false, location:'Bat Yam', price:'100 USD', type: 'vip'}, ];
 
         return (
             <Container style={{backgroundColor:'#fff'}}>
