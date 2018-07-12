@@ -1,6 +1,6 @@
 import React from 'react';
 import { Thumbnail, Text } from 'native-base';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 
 const globalStyles = require('../stylesheet');
 
@@ -14,12 +14,12 @@ const RssEvent = (props) => {
         var smallText = text.substring(0 , 8) + '...';
     }    
     return (        
-        <TouchableOpacity onPress={() => nav('RssComments', { text: "dfdfd", key:"1"})}>       
+        <TouchableWithoutFeedback onPress={() => nav('RssComments', { text: "dfdfd", key:"1"})}>       
             <View style={container} key={key}>                      
-                    <Thumbnail source={thumbnail} style={thumbnailStyle}/>
-                    <Text style={textStyle}>{smallText?smallText:text}</Text>
+                <Thumbnail source={thumbnail} style={thumbnailStyle}/>
+                <Text style={textStyle}>{smallText?smallText:text}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
     );
 }
 

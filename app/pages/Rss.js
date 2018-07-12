@@ -26,22 +26,14 @@ class Rss extends Component {
     {key : '2', thumbnail : userAvatar, from : 'Larisa', news_image : news_image, message : 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects', count_comments : 3, userAvatar:userAvatar}];
     var events = [{key: '1', thumbnail : userAvatar, text:'Sukkot'}, {key: '2', thumbnail : userAvatar, text:'Rosh Hashana'}, {key: '3', thumbnail : userAvatar, text:'Hag 1'}, {key: '6', thumbnail : userAvatar, text:'Hag 6'}, {key: '4', thumbnail : userAvatar, text:'Hag 123'}, {key: '5', thumbnail : userAvatar, text:'Hag 3455'}];
     const avatar = this.props.user.thumbnail;
-    /// mock    
-
+    /// mock   
     
     return (
-        <Container>
-            <HeaderBar>
-                {this.props.user.header}
-            </HeaderBar>
-            <Content style={{backgroundColor:'#fff'}}>
-                <FlatList
-                    data={data}
-                    ListHeaderComponent = { this.showEvents(events) }
-                    renderItem={({item}) => <RssItem data = {item} nav={this.props.navigation.navigate}/>
-                }/>
-            </Content>            
-        </Container>
+            <FlatList
+                data={data}
+                ListHeaderComponent = { this.showEvents(events) }
+                renderItem={({item}) => <RssItem data = {item} nav={this.props.navigation.navigate}/>
+            }/>            
     );
   }
 }

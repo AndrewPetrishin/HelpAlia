@@ -70,7 +70,6 @@ class Chat extends Component {
                 renderItem = {({ item }) => <ChatMessage data = {item} nav={nav}/>}           
                 onScroll = { this._onScroll }/>
                 { this.showButtonDown() }
-            <FooterSendMessage/>
         </Container>
     );
   }

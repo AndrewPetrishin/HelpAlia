@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 
 // import thunk from 'redux-thunk';
-
+import { Container, Content, Text, List } from 'native-base';
 import reducers from './reducers';
 import { NAVIGATOR_ROUTER, NAVIGATOR_ROUTER_INIT } from './components/Helper';
 import FooterController from './components/FooterController';
-
+import HeaderController from './components/HeaderController'
 // const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 // const reducer = combineReducers(reducers);
 const store = createStore(reducers);
@@ -29,7 +29,8 @@ export default class Index extends Component {
       <View style={{ flex:1 }}>
         <StatusBar barStyle="light-content" />
         <Provider store={store}>
-          <View style={{ flex:1 }}>          
+          <View style={{ flex:1, backgroundColor:'#fff' }}> 
+            <HeaderController nav={ this.state.navigator }/>  
             <AppNavigator ref={nav => { !this.state.navigator && this.setState({navigator : nav}) }}/>
             <FooterController nav={ this.state.navigator }/>
           </View>
