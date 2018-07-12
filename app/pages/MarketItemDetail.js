@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
 import { View, FlatList, Image, TouchableOpacity } from 'react-native';
-import { FooterBar, HeaderBar, Comment, SearchInput, MarketItem } from '../components/';
+import { FooterBar, HeaderBar, Comment, SearchInput, MarketItem } from '../components';
 import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
 
-class Marketplace extends Component {    
+class MarketplaceItemDetails extends Component {    
     
     showHeader = (filters) => {    
         const filtersView = filters.map(({key, text}) => (
@@ -72,4 +72,4 @@ const styles = {
     }
 }
 
-export default Marketplace;
+export default MarketplaceItemDetails;

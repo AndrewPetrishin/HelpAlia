@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
 import { View, FlatList, Image } from 'react-native';
-import { FooterCommit, HeaderBar, Comment } from '../components/';
+import { FooterCommit, HeaderBar, Comment } from '../components';
 
 class Comments extends Component {    
   render() {
@@ -17,6 +17,7 @@ class Comments extends Component {
     {key:'6', thumbnail: userAvatar, from:'Abramovich', message: ' pleasure and praising pain was born ', time:'2 min'}];
 
     var items = [mainData, ...data];
+    console.log('Comments nav = ' + this.props.navigation.navigate);
     return (
         <Container style={{backgroundColor:'#fff'}}>
             <HeaderBar left='HomeScreen' nav={this.props.navigation.navigate}>                                

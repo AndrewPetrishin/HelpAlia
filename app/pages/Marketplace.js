@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
 import { View, FlatList, Image, TouchableOpacity } from 'react-native';
-import { FooterBar, HeaderBar, Comment, SearchInput, MarketItem } from '../components/';
-import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
+import { FooterBar, HeaderBar, Comment, SearchInput, MarketItem } from '../components';
+import { SPACE_SPEC, WIDTH_1PX, PAGE_NAME_MARKETPLACE } from '../components/Helper';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 
-class Marketplace extends Component {    
+class Marketplace extends Component {  
+    constructor(props)  {
+        super(props);
+    }
     
     showHeader = (filters) => {    
         const filtersView = filters.map(({key, text}) => (
@@ -28,6 +33,7 @@ class Marketplace extends Component {
     }
 
     render() {
+        this.props.setCurrentPage(PAGE_NAME_MARKETPLACE);
         var av1 = require('../images/header/search.png');
         var av2 = require('../images/mock/new-desks.jpg');
         var av3 = require('../images/mock/pc.png');    
@@ -57,7 +63,7 @@ class Marketplace extends Component {
                         renderItem={({item}) => <MarketItem data = {item} nav={this.props.navigation.navigate}/>
                     }/>
                 </Content>
-                <FooterBar newMessageRssCount={newMessageRssCount} selected ={3} nav={this.props.navigation.navigate}/>
+                {/* <FooterBar newMessageRssCount={newMessageRssCount} selected ={3} nav={this.props.navigation.navigate}/> */}
             </Container>
         );
     }
@@ -93,4 +99,4 @@ const styles = {
     }
 }
 
-export default Marketplace;
+export default connect(null, actions)(Marketplace);

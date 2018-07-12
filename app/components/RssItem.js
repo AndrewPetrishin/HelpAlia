@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Left, Body, Right, Title, Button, Icon, Text, Thumbnail, Item, Input, List } from 'native-base';
 import { View, Image } from 'react-native';
-import { Comment } from './';
+import { Comment } from '.';
 
 const RssItem = (props) => {
     var {key, thumbnail, from, news_image, message, count_comments, userAvatar, style} = props.data;

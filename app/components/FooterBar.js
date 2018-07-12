@@ -1,37 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Footer, FooterTab, Thumbnail } from 'native-base';
-import { PixelRatio} from 'react-native';
-import { FooterButton } from './';
-import { withNavigation } from 'react-navigation';
+import { FooterButton } from '.';
+import { NavigationActions } from 'react-navigation';
+import { PAGE_NAME_RSS, PAGE_NAME_CHAT_LIST, PAGE_NAME_MARKETPLACE, PAGE_NAME_SERVICES, WIDTH_1PX } from './Helper';
 
-const FooterBar = (props) => {
-    var { newMessageRssCount, newMessageChatCount, userIcon, selected, nav } = props;
-    var rss_icon = selected && selected == 1 ? require('../images/footer/rss_selected.png') : require('../images/footer/rss.png');
-    var messenger_icon = selected && selected == 2 ? require('../images/footer/messenger.png') : require('../images/footer/messenger.png');
-    var marketplace_icon = selected && selected == 3 ? require('../images/footer/marketplace_selected.png') : require('../images/footer/marketplace.png');
-    var services_icon = selected && selected == 4 ? require('../images/footer/services_selected.png') : require('../images/footer/services.png');
-    var cabinet_icon = userIcon != undefined ? { uri:userIcon } : require('../images/footer/no_user.png');
-    const mainStyle = [styles.footerStyle, globalStyles.borderTopWidth2PX];
-    return (
-        <Footer>
-            <FooterTab style={mainStyle}>
-                <FooterButton icon={rss_icon} badge messageCount={newMessageRssCount} onPress={() => nav('HomeScreen')}/>
-                <FooterButton icon={messenger_icon} badge messageCount={newMessageChatCount} onPress={() => nav('ChatList')}/>                    
-                <FooterButton icon={marketplace_icon} widthIcon={36} onPress={() => nav('Marketplace')}/>
-                <FooterButton icon={services_icon} onPress={() => nav('HomeScreen')}/>
-                <FooterButton icon={cabinet_icon} cabinet onPress={() => nav('HomeScreen')}/>
-            </FooterTab>
-        </Footer>    
-    )
+_onPress = (page) => {
+    console.log('props = ' + this.props);
+    console.log('onPress = ' + page);
+    ///nav.dispatch(NavigationActions.navigate({ routeName: page }));
 }
 
-const globalStyles = require('../stylesheet');
+const FooterBar = (props) => {  
+    var { newMessageRssCount, newMessageChatCount, userIcon, selected, nav } = props;    
+    var rss_icon = selected && selected == PAGE_NAME_RSS ? require('../images/footer/rss_selected.png') : require('../images/footer/rss.png');
+    var messenger_icon = selected && selected == PAGE_NAME_CHAT_LIST ? require('../images/footer/messenger.png') : require('../images/footer/messenger.png');
+    var marketplace_icon = selected && selected == PAGE_NAME_MARKETPLACE ? require('../images/footer/marketplace_selected.png') : require('../images/footer/marketplace.png');
+    var services_icon = selected && selected == PAGE_NAME_SERVICES ? require('../images/footer/services_selected.png') : require('../images/footer/services.png');
+    var cabinet_icon = userIcon != undefined ? { uri:userIcon } : require('../images/footer/no_user.png');
+    return (
+        <Footer>
+            <FooterTab style={styles.footerStyle}>
+                <FooterButton icon={rss_icon} badge messageCount={newMessageRssCount} onPress={() => nav.dispatch(NavigationActions.navigate({ routeName: PAGE_NAME_RSS }))}/>
+                <FooterButton icon={messenger_icon} badge messageCount={newMessageChatCount} onPress={() => nav._navigation.navigate(PAGE_NAME_CHAT_LIST)}/>                    
+                <FooterButton icon={marketplace_icon} widthIcon={36} onPress={() => nav.dispatch(NavigationActions.navigate({ routeName: PAGE_NAME_MARKETPLACE }))}/>
+                <FooterButton icon={services_icon} onPress={this._onPress("ddd")}/>
+                <FooterButton icon={cabinet_icon} cabinet onPress={() => nav.dispatch(NavigationActions.navigate({ routeName: PAGE_NAME_MARKETPLACE }))}/>
+            </FooterTab>
+        </Footer>    
+    )    
+}
 
 const styles = {
     footerStyle: {
         backgroundColor:'#fff',
         borderTopColor: '#d9d9d9', 
+        borderTopWidth: WIDTH_1PX * 2,
     }
 }
 
-export {FooterBar};
+export { FooterBar };

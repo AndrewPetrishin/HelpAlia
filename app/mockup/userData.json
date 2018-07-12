@@ -1,5 +1,8 @@
 {
     "userName" : "Vasya",
     "thumbnail" : "http://lorempixel.com/400/400/people/1/",
-    "header" : "RSS SUPER NEWS"
+    "header" : "RSS SUPER NEWS",
+    "rssMsg" : 3,
+    "chatMsg" : 12,
+    "selectedPage" : "HomeScreen"
 }

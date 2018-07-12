@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
 import { View, FlatList, Image, Dimensions, TouchableOpacity} from 'react-native';
-import { FooterSendMessage, HeaderBar, ChatMessage } from '../components/';
+import { FooterSendMessage, HeaderBar, ChatMessage } from '../components';
 
 class Chat extends Component {      
     constructor(props){

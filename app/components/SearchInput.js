@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Item, Input } from 'native-base';
-import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
+import { SPACE_SPEC, WIDTH_1PX } from './Helper';
 
 const SearchInput = (props) => {
     const searchImg = require('../images/header/search.png');

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, Item, Input} from 'native-base';
 import { View, FlatList, Image, TextInput} from 'react-native';
-import { HeaderBar, Comment, ChatItem, FooterBar, SearchInput } from '../components/';
-import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
+import { HeaderBar, Comment, ChatItem, FooterBar, SearchInput } from '../components';
+import { SPACE_SPEC, WIDTH_1PX, PAGE_NAME_CHAT_LIST } from '../components/Helper';
+import * as actions from '../actions';
+import { connect } from 'react-redux';
 
 class ChatList extends Component {      
 
     constructor(props){
-        super(props);
+        super(props);        
         this.state = { buttonDown : false};
         this._onScroll = this._onScroll.bind(this);
     }
@@ -72,7 +74,6 @@ class ChatList extends Component {
                         
                         />                
                 </Content>
-                <FooterBar newMessageChatCount={newMessageChatCount} newMessageRssCount={newMessageRssCount} selected ={2} nav={nav}/>
             </Container>
     );
   }
