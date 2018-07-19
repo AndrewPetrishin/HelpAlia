@@ -10,3 +10,4 @@ export * from './ChatMessage';
 export * from './FooterSendMessage';
 export * from './SearchInput';
 export * from './MarketItem';
+export * from './Helper';

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Thumbnail, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
+import { SPACE_SPEC } from './Helper';
 
 const ChatItem = ({item, style, header, nav, small}) => {  
     const mainContainer = header ? [styles.mainContainer, styles.mainContainerHeader] : styles.mainContainer;       
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     },
     thumbnail:{
         marginLeft: 10,   
-        marginTop: 20,
+        marginTop: SPACE_SPEC,
         marginBottom: 20     
     },
     mainContainerHeader:{

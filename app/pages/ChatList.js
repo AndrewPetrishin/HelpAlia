@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, Item, Input} from 'native-base';
-import { View, FlatList, Image, TextInput} from 'react-native';
+import { View, FlatList, StyleSheet, TextInput} from 'react-native';
 import { HeaderBar, Comment, ChatItem, FooterBar, SearchInput } from '../components';
-import { SPACE_SPEC, WIDTH_1PX, PAGE_NAME_CHAT_LIST } from '../components/Helper';
+import {  WIDTH_1PX, PAGE_NAME_CHAT_LIST } from '../components/Helper';
+import SPACE_SPEC from '../components/Helper';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 class ChatList extends Component {      
-
-    constructor(props){
+    constructor(props){       
         super(props);        
         this.state = { buttonDown : false};
         this._onScroll = this._onScroll.bind(this);
@@ -26,7 +26,8 @@ class ChatList extends Component {
             this.setState({buttonDown : false});
         }
     }
-    showFooterForChatList = (item, nav) => {
+
+    showHeaderForChatList = (item, nav) => {
         return (        
             <View style={styles.mainContainer}>
                 <SearchInput />
@@ -39,8 +40,6 @@ class ChatList extends Component {
     }
 
     render() {
-        var newMessageRssCount = 2;
-        var newMessageChatCount = 10;
         var av1 = require('../images/mock/heroes/bouny_hunter.png');
         var av2 = require('../images/mock/heroes/earthspirit.png');
         var av3 = require('../images/mock/heroes/oracle.png');
@@ -61,25 +60,21 @@ class ChatList extends Component {
 
         var headerData = {key:'main', name:'Ariel group chat', thumbnail:avMain, description:'344 members'};
         const nav = this.props.navigation.navigate;
-        return (
-            <Container>
-                <HeaderBar noborder = {this.state.buttonDown}>List chats</HeaderBar>
-                <Content style={{backgroundColor:'#fff'}}>
-                    <FlatList  
-                        horizontal={false}                                      
-                        data={data}
-                        ListHeaderComponent = { this.showFooterForChatList(headerData, nav) }
-                        renderItem={({item}) => <ChatItem small item={item} nav={nav}/>}
-                        onScroll = { this._onScroll }
-                        
-                        />                
-                </Content>
-            </Container>
+        return (          
+            <Content style={{backgroundColor:'#fff'}}>
+                <FlatList  
+                    horizontal={false}                                      
+                    data={data}
+                    ListHeaderComponent = { this.showHeaderForChatList(headerData, nav) }
+                    renderItem={({item}) => <ChatItem small item={item} nav={nav}/>}
+                    onScroll = { this._onScroll }                        
+                    />                
+            </Content>
     );
   }
 }
 
-const styles ={
+const styles = StyleSheet.create({
     mainContainer:{
         flex:1,
         backgroundColor:'#f7f7f7',
@@ -90,6 +85,6 @@ const styles ={
         margin: 2 * SPACE_SPEC,
         color:'#c8c7cc'
     }
-};
+});
 
 export default ChatList;

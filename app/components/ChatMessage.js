@@ -62,11 +62,11 @@ const ChatMessage = (props) => {
         case  MESSAGE_TYPE_ADMIN:
             return (
                 <TouchableOpacity onPress = {() => nav('HomeScreen', { id : 3 })}>
-                <View style={styles.mainContainer}>                            
-                        {this.showMessageBox(data)}                    
-                        {this.showThumbnail(data.thumbnail)}                     
-                </View>
-            </TouchableOpacity> );     
+                    <View style={styles.mainContainer}>                            
+                            {this.showMessageBox(data)}                    
+                            {this.showThumbnail(data.thumbnail)}                     
+                    </View>
+                </TouchableOpacity> );     
         case MESSAGE_TYPE_LOCAL:
             return (
                 <View style={styles.mainContainer}>   

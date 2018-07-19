@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import { Container, Content, Text, List } from 'native-base';
 import { View, FlatList} from 'react-native';
-import { HeaderBar, RssItem, RssEvent } from '../components';
+import { RssItem, RssEvent } from '../components';
 import { connect } from 'react-redux';
-import { SPACE_SPEC, WIDTH_1PX } from '../components/Helper';
-import FooterBar from '../components/FooterBar'
+import { SPACE_SPEC, WIDTH_1PX, PAGE_NAME_RSS } from '../components/Helper';
+import * as actions from '../actions/'
 
 class Rss extends Component {
-    showEvents(data){
+    styles = () => {
+        return {
+            eventsMainContainer:{
+                borderBottomWidth : WIDTH_1PX,
+            },
+            eventsTextContainer:{
+                margin : SPACE_SPEC,
+            }
+        }
+    }
+    
+    componentDidMount(){      
+        this.props.setCurrentPage(PAGE_NAME_RSS);        
+    }
+
+    showEvents = (data) => {
+        const styles = this.styles();
         return (
             <View style={styles.eventsMainContainer}>
                 <Text style={styles.eventsTextContainer}>Events</Text>
@@ -29,26 +45,19 @@ class Rss extends Component {
     /// mock   
     
     return (
+        <Content style={{backgroundColor:'#fff'}}>
             <FlatList
                 data={data}
                 ListHeaderComponent = { this.showEvents(events) }
                 renderItem={({item}) => <RssItem data = {item} nav={this.props.navigation.navigate}/>
             }/>            
+        </Content>
     );
   }
-}
-
-const styles = {
-    eventsMainContainer:{
-        borderBottomWidth : WIDTH_1PX,
-    },
-    eventsTextContainer:{
-        margin : SPACE_SPEC,
-    }
 }
 
 const mapStateToProps = state => {
     return { user : state.user };
 }
 
-export default connect(mapStateToProps)(Rss);
+export default connect(mapStateToProps, actions)(Rss);

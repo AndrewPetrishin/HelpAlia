@@ -59,10 +59,7 @@ class Chat extends Component {
 
     const nav = this.props.navigation.navigate;    
     return (
-        <Container style={{backgroundColor:'#fff'}}>
-            <HeaderBar left='ChatList' nav={this.props.navigation.navigate}>                                
-                Chat
-            </HeaderBar>
+        <Content style={{backgroundColor:'#fff'}}>
             <FlatList       
                 ref="flatList"          
                 inverted
@@ -70,7 +67,7 @@ class Chat extends Component {
                 renderItem = {({ item }) => <ChatMessage data = {item} nav={nav}/>}           
                 onScroll = { this._onScroll }/>
                 { this.showButtonDown() }
-        </Container>
+        </Content>
     );
   }
 }

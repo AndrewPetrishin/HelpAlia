@@ -26,12 +26,14 @@ export default class Index extends Component {
   
   render() {
     return (
-      <View style={{ flex:1 }}>
+      <View style={{flex:1}}>
         <StatusBar barStyle="light-content" />
         <Provider store={store}>
-          <View style={{ flex:1, backgroundColor:'#fff' }}> 
-            <HeaderController nav={ this.state.navigator }/>  
-            <AppNavigator ref={nav => { !this.state.navigator && this.setState({navigator : nav}) }}/>
+          <View style={{flex:1, backgroundColor: '#fff'}}>
+            <HeaderController nav={ this.state.navigator }/>   
+            <View style={{flex:1, backgroundColor: '#fff'}}>
+              <AppNavigator ref={nav => { !this.state.navigator && this.setState({navigator : nav}) }}/>         
+            </View>   
             <FooterController nav={ this.state.navigator }/>
           </View>
         </Provider>

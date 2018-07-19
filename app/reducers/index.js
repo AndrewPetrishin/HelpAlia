@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import UserDataReducer from './UserDataReducer';
-import SelectedPage from './SelectedPage';
+import SelectedPageDataReducer from './SelectedPageDataReducer';
 
 export default combineReducers({
-    currentPage: SelectedPage, 
+    currentPage: SelectedPageDataReducer, 
     user: UserDataReducer}
 );

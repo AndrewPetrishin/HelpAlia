@@ -11,7 +11,8 @@ import { FooterButton } from './';
 
 class FooterController extends Component {
 
-    mainFooter = (nav, currentPage) => {        
+    mainFooter = (nav) => {        
+        const { currentPage } = this.props;
         const userThumbnail = this.props.user.thumbnail;
         const newRSSmessage = this.props.user.rssMsg;
         const newChatMessage = this.props.user.chatMsg;        
@@ -39,13 +40,11 @@ class FooterController extends Component {
     }
    
     render() {   
-        const { nav } = this.props;
-        const currentPage = this.props.currentPage; 
-        console.log(currentPage); 
+        const { nav, currentPage } = this.props; 
         switch(currentPage){
             case PAGE_NAME_CHAT_ROOM: return <FooterSendMessage />;
             case PAGE_NAME_RSS_COMMENTS: return <FooterCommit />;
-            default: return this.mainFooter(nav, currentPage);
+            default: return this.mainFooter(nav);
         }
     }
 }
@@ -59,7 +58,7 @@ const styles = {
 }
 
 const mapStateToProps = state => {
-    return { currentPage : state.currentPage, user : state.user };
+    return { currentPage : state.currentPage.name, user : state.user };
 }
 
 export default connect(mapStateToProps, actions)(FooterController);

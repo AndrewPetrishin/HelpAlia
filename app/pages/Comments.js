@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { Container, List, Content, Text, Thumbnail, Input} from 'native-base';
 import { View, FlatList, Image } from 'react-native';
 import { FooterCommit, HeaderBar, Comment } from '../components';
+import * as actions from '../actions/'; 
+import { connect } from 'react-redux';
+import { PAGE_NAME_RSS_COMMENTS } from '../components/Helper';
 
 class Comments extends Component {    
+    componentDidMount(){
+        this.props.setCurrentPage(PAGE_NAME_RSS_COMMENTS);
+    }
+
   render() {
     var userAvatar = require('../images/mock/47.png');
     var news_image = require('../images/mock/Isreal-land.jpg');
@@ -20,9 +27,6 @@ class Comments extends Component {
     console.log('Comments nav = ' + this.props.navigation.navigate);
     return (
         <Container style={{backgroundColor:'#fff'}}>
-            <HeaderBar left='HomeScreen' nav={this.props.navigation.navigate}>                                
-                Comments
-            </HeaderBar>
             <FlatList                 
                     data = {items}                    
                     renderItem = {({item, index}) => index==0?    
@@ -35,7 +39,6 @@ class Comments extends Component {
                         <Comment thumbnail={item.thumbnail} message={item.message} from={item.from} time={item.time}/>
                     </View>
                 }/> 
-            <FooterCommit thumbnailSrc = {userAvatar}/>
         </Container>
     );
   }
@@ -70,4 +73,10 @@ const styles = {
       }
 }
 
-export default Comments;
+export default connect(null, actions)(Comments);
+
+_onPress = (nav, property, page) => {
+    console.log(this.props);
+    this.props.setCurrentPage(page);
+    nav(page, property);
+}
